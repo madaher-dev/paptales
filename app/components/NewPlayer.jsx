@@ -37,7 +37,7 @@ export default function NewPlayer({ userId }) {
       let response = await res.json();
       let player = response.player;
 
-      router.push(`/dashboard?playerId=${player._id}`);
+      router.push(`/story?playerId=${player._id}`);
     } catch (error) {
       setLoading(false);
       alert(error);
