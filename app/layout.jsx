@@ -16,6 +16,13 @@ export default function RootLayout({ children }) {
     <ClerkProvider
       appearance={{
         baseTheme: light,
+        elements: {
+          formButtonPrimary:
+            "bg-purple-500 hover:bg-purple-400 text-sm normal-case",
+        },
+        variables: {
+          colorPrimary: "#374151",
+        },
       }}
     >
       <html lang="en">
