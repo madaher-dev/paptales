@@ -30,7 +30,9 @@ export default function Modal({ setIsOpen, isOpen, children }) {
           <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div className="py-4 text-left px-6">
               <div className="flex justify-between items-center pb-3">
-                <p className="text-2xl font-bold">Simple Modal!</p>
+                <p className="text-2xl font-bold">
+                  Add a character to your story!
+                </p>
                 <div
                   className="cursor-pointer z-50"
                   onClick={() => setIsOpen(false)}

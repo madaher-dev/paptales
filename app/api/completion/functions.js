@@ -11,6 +11,10 @@ exports.generatePrompt = (input) => {
   characters.forEach((character) => {
     charPrompt += `- A ${character.type} called ${character.name} \n`;
   });
+  if (charPrompt === "") {
+    charPrompt =
+      "No characters were selected for this story. Choose random characters to add to your story.";
+  }
   // console.log("charPrompt", charPrompt);
 
   // ending = `Makram, I hope you have enjoyed this story and learned a valuable lesson. Be brave and use your courage to achieve your dreams and defend those who you love.`

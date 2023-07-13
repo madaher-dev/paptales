@@ -150,7 +150,7 @@ export default function NewStory({ player, characters }) {
               onClick={() => setIsOpen(true)}
               disabled={max}
             >
-              Open Modal
+              Add Character
             </button>
             <button
               id="clear"
