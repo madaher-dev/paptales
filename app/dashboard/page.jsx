@@ -1,13 +1,13 @@
 import { auth } from "@clerk/nextjs";
 import PlayerList from "../components/PlayerList";
 
-const URL = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+const URL2 = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 const Dashboard = async () => {
   const { userId } = auth();
 
-  const playersRes = await fetch(`${URL}/api/players/${userId}`);
+  const playersRes = await fetch(`${URL2}/api/players/${userId}`);
   const jsonRes = await playersRes.json();
-  const players = jsonRes.data || [];
+  const players = jsonRes?.data || [];
 
   return (
     <div className="flex flex-col items-center justify-center ">

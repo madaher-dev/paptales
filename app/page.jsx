@@ -1,4 +1,3 @@
-import { SignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
         characters or adding your own. Paptales will generate a story that is
         suitable for the player's age and the language of their preference.
       </p>
-      <SignIn />
     </div>
   );
 }
