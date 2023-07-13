@@ -10,7 +10,7 @@ export async function POST(req) {
   const client = new textToSpeech.TextToSpeechClient({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
     },
   });
   const { story, language } = await req.json();
