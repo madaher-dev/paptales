@@ -1,6 +1,15 @@
+"use client";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function PlayerList({ players }) {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <>
       <div className="flex flex-col items-center justify-center">

@@ -8,7 +8,13 @@ export default function NewStory({ player, characters }) {
   const [audioElement, setAudioElement] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [auioLoading, setAudioLoading] = useState(false);
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const {
     completion,
     input,

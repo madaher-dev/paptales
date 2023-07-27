@@ -13,6 +13,7 @@ export default async function Player({ searchParams }) {
     characters = await fetch(`${URL}/api/characters`);
     characters = await characters.json();
     characters = characters.data;
+    console.log("characters", characters);
   } catch (e) {
     console.log(e);
   }

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
-import { SignUp } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
 
 export default function Home() {
   const { userId } = auth();
@@ -18,7 +18,7 @@ export default function Home() {
           preference.
         </p>
       </div>
-      <SignUp routing="hash" />
+      <SignIn routing="hash" />
     </>
   );
 }
