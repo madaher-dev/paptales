@@ -19,8 +19,6 @@ export async function POST(req) {
   let languageCode = "en-US";
   let name = "en-US-Wavenet-F";
 
-  console.log("language", language);
-
   if (language === "spanish") {
     languageCode = "es-ES";
     name = "es-ES-Standard-A";

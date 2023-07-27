@@ -1,10 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Characters from "./Characters";
 import Modal from "./Modal";
 import { useCompletion } from "ai/react";
 
 export default function NewStory({ player, characters }) {
+  const [audioElement, setAudioElement] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [auioLoading, setAudioLoading] = useState(false);
+
   const {
     completion,
     input,
@@ -93,8 +97,28 @@ export default function NewStory({ player, characters }) {
     setIsReady(true);
     stop();
   };
+  const audioElementRef = useRef(null);
+
+  // Function to handle audio playback
+  const handleAudioPlayback = async (e) => {
+    e.preventDefault();
+
+    if (!audioElement) {
+      await handleRead(e);
+      return;
+    }
+
+    if (isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   const handleRead = async (e) => {
     e.preventDefault();
+    setAudioLoading(true);
     let response = await fetch("/api/audio", {
       method: "POST",
       body: JSON.stringify({
@@ -107,7 +131,17 @@ export default function NewStory({ player, characters }) {
     });
     const blob = await response.blob();
     const audio = new Audio(URL.createObjectURL(blob));
+    setAudioElement(audio); // Store the audio element in the state
+    audioElementRef.current = audio; // Store the audio element in the ref
+    setAudioLoading(false);
     audio.play();
+
+    // Update the audio playback state when audio is finished playing
+    audio.addEventListener("ended", () => {
+      setIsPlaying(false);
+    });
+
+    setIsPlaying(true);
   };
 
   return (
@@ -225,9 +259,10 @@ export default function NewStory({ player, characters }) {
               </button>
               <button
                 className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                onClick={handleRead}
+                onClick={handleAudioPlayback}
               >
-                Read
+                {auioLoading ? "Loading..." : isPlaying ? "Pause" : "Read"}
+                {/* {isPlaying  ? "Pause" : "Read"} Play/Pause button */}
               </button>
             </div>
           ) : isLoading ? (
