@@ -258,7 +258,7 @@ export default function NewStory({ player, characters }) {
                 Generate New Story
               </button>
               <button
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1"
                 onClick={handleAudioPlayback}
               >
                 {auioLoading ? "Loading..." : isPlaying ? "Pause" : "Read"}
