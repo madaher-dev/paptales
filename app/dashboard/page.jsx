@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs";
-import PlayerList from "../components/PlayerList";
+import PlayerList from "@/app/components/PlayerList";
 import Link from "next/link";
 
 const URL2 = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";

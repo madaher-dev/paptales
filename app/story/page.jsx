@@ -1,22 +1,15 @@
-import NewStory from "../components/NewStory";
-const URL = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+import NewStory from "@/app/components/NewStory";
+
+import { getPlayerInfo, getAllCharacters } from "@/utils/functions";
 
 export default async function Player({ searchParams }) {
   const { playerId } = searchParams;
-  let player = {};
-  let characters = [];
-  try {
-    player = await fetch(`${URL}/api/players/single/${playerId}`);
-    player = await player.json();
-    player = player.data;
 
-    characters = await fetch(`${URL}/api/characters`);
-    characters = await characters.json();
-    characters = characters.data;
-    console.log("characters", characters);
-  } catch (e) {
-    console.log(e);
-  }
+  let player = await getPlayerInfo(playerId);
+  // console.log("player", player);
+
+  let characters = await getAllCharacters();
+  // console.log("characters", characters);
 
   return (
     <div>

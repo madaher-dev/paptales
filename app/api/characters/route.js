@@ -1,6 +1,6 @@
 import { connectToDatabase } from "@/utils/db";
 import { NextResponse } from "next/server";
-import Character from "../../../models/characterModel";
+import Character from "@/models/characterModel";
 
 export async function GET(request) {
   await connectToDatabase();
@@ -8,7 +8,7 @@ export async function GET(request) {
   try {
     const data = await Character.find();
 
-    return NextResponse.json({ data });
+    return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
       { message: error.message },

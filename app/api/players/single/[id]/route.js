@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
 
   try {
     const data = await Player.findById(id);
-    return NextResponse.json({ data });
+    return NextResponse.json(data);
   } catch (error) {
     return NextResponse.error(error);
   }

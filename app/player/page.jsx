@@ -1,4 +1,4 @@
-import NewPlayer from "../components/NewPlayer";
+import NewPlayer from "@/app/components/NewPlayer";
 import { currentUser } from "@clerk/nextjs";
 
 export default async function Player() {

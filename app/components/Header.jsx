@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { UserButton, auth } from "@clerk/nextjs";
 
-const Header = async ({ username }) => {
+const Header = async () => {
   const { userId } = auth();
 
   return (
@@ -12,7 +12,19 @@ const Header = async ({ username }) => {
         </Link>
       </div>
       <div className="flex items-center text-white">
-        {!userId && (
+        {userId ? (
+          <>
+            <Link href="player" className="text-gray-300 hover:text-white mr-4">
+              New Player
+            </Link>
+            <Link
+              href="profile"
+              className="text-gray-300 hover:text-white mr-4"
+            >
+              Profile
+            </Link>
+          </>
+        ) : (
           <>
             <Link
               href="sign-in"
@@ -28,19 +40,7 @@ const Header = async ({ username }) => {
             </Link>
           </>
         )}
-        {userId && (
-          <>
-            <Link href="player" className="text-gray-300 hover:text-white mr-4">
-              New Player
-            </Link>
-            <Link
-              href="profile"
-              className="text-gray-300 hover:text-white mr-4"
-            >
-              Profile
-            </Link>
-          </>
-        )}
+
         <div className="ml-auto">
           <UserButton afterSignOutUrl="/" />
         </div>
